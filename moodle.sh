@@ -11,7 +11,7 @@ fi
 
 #Actualización de paquetes
 
-apt-get update>dev/null 2>&1
+apt-get update >dev/null 2>&1
 
 #Instalación del paquete LAMP
 
@@ -47,7 +47,7 @@ if [ $(dpkg-query -W -f='${Status}' 'mariadb-server' | grep -c "ok installed") -
 	apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xF1656F24C74CD1D8 >/dev/null 2>&1
 	add-apt-repository ‘deb [arch=amd64] http://mirror.rackspace.com/mariadb/repo/10.4/debian buster main’ >/dev/null 2>&1
 	apt-get update >/dev/null 2>&1
-	apt-get install mariadb-server >/dev/null 2>&1
+	apt-get -y install mariadb-server >/dev/null 2>&1
 	
 	if [ $? -eq 0 ];then
 		echo "Mariadb-server se ha instalado correctamente." >>/script/registro.txt
@@ -57,8 +57,8 @@ if [ $(dpkg-query -W -f='${Status}' 'mariadb-server' | grep -c "ok installed") -
 		echo "Mariadb-server no se ha instalado correctamente."
 	fi
 else
-	echo "Mariadb-server està instal.lat" >>/script/registro.txt
-	echo "Mariadb-server està instal.lat" 
+	echo "Mariadb-server esta instalado" >>/script/registro.txt
+	echo "Mariadb-server esta instalado" 
 fi
 
 #Instalación del paquete php 7.4
@@ -70,7 +70,7 @@ if [ $(dpkg-query -W -f='${Status}' 'php' | grep -c "ok installed") -eq 0 ];then
 	wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg >/dev/null 2>&1
 	echo "deb https://packages.sury.org/php/ $( lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list >/dev/null 2>&1
 	apt-get update >/dev/null 2>&1
-	apt-get install php7.4 >/dev/null 2>&1
+	apt-get -y install php7.4 >/dev/null 2>&1
 	if [ $? -eq 0 ];then
 		echo "PHP 7.4 se ha instalado correctamente"
 		echo "PHP 7.4 se ha instalado correctamente" >>/script/registro.txt
@@ -92,7 +92,7 @@ if [ $(dpkg-query -W -f='${Status}' 'php7.4-xml' | grep -c "ok installed") -eq 0
 	echo "php-xml no esta instalado" >>/script/registro.txt
 
 	apt-get update >/dev/null 2>&1
-	apt-get install php 7.4-xml  >/dev/null 2>&1
+	apt-get -y install php 7.4-xml  >/dev/null 2>&1
 
 	if [ $? -eq 0 ];then
 
@@ -116,7 +116,7 @@ if [ $(dpkg-query -W -f='${Status}' 'php7.4-mbstring' | grep -c "ok installed") 
 	echo "php-mbstring no esta instalado"
 	echo "php-mbstring no esta instalado" >>/script/registro.txt
 
-	apt-get install php7.4-mbstring >/dev/null 2>&1
+	apt-get -y install php7.4-mbstring >/dev/null 2>&1
 
 	if [ $? -eq 0 ];then
 
@@ -140,7 +140,7 @@ if [ $(dpkg-query -W -f='${Status}' 'php7.4-curl' | grep -c "ok installed") -eq 
 	echo "php-curl no esta instalado"
 	echo "php-curl no esta instalado" >>/script/registro.txt
 
-	apt-get install php7.4-curl >/dev/null 2>&1
+	apt-get -y install php7.4-curl >/dev/null 2>&1
 
 	if [ $? -eq 0 ];then
 
@@ -164,7 +164,7 @@ if [ $(dpkg-query -W -f='${Status}' 'php7.4-zip' | grep -c "ok installed") -eq 0
 	echo "php-zip no esta instalado"
 	echo "php-zip no esta instalado" >>/script/registro.txt
 
-	apt-get install php7.4-zip >/dev/null 2>&1
+	apt-get -y install php7.4-zip >/dev/null 2>&1
 
 	if [ $? -eq 0 ];then
 
@@ -188,7 +188,7 @@ if [ $(dpkg-query -W -f='${Status}' 'php7.4-gd' | grep -c "ok installed") -eq 0 
 	echo "php-zip no esta instalado"
 	echo "php-zip no esta instalado" >>/script/registro.txt
 
-	apt-get install php7.4-gd >/dev/null 2>&1
+	apt-get -y install php7.4-gd >/dev/null 2>&1
 
 	if [ $? -eq 0 ];then
 
@@ -212,7 +212,7 @@ if [ $(dpkg-query -W -f='${Status}' 'php7.4-intl' | grep -c "ok installed") -eq 
 	echo "php-zip no esta instalado"
 	echo "php-zip no esta instalado" >>/script/registro.txt
 
-	apt-get install php7.4-intl >/dev/null 2>&1
+	apt-get -y install php7.4-intl >/dev/null 2>&1
 
 	if [ $? -eq 0 ];then
 
@@ -236,7 +236,7 @@ if [ $(dpkg-query -W -f='${Status}' 'php7.4-soap' | grep -c "ok installed") -eq 
 	echo "php-soap no esta instalado"
 	echo "php-soap no esta instalado" >>/script/registro.txt
 
-	apt-get install php7.4-soap >/dev/null 2>&1
+	apt-get -y install php7.4-soap >/dev/null 2>&1
 
 	if [ $? -eq 0 ];then
 
@@ -280,20 +280,20 @@ fi
 #Redirrecion al directorio opt
 cd /opt/ >/dev/null 2>&1
 if [ $? -eq 0 ]; then
-    echo "Dirigirse al directorio opt" 
+	echo "Dirigirse al directorio opt" 
 	echo "Dirigirse al directorio opt" >>/script/registro.txt
 else
-    echo "Error al dirigirse al directorio opt"
+	echo "Error al dirigirse al directorio opt"
 	echo "Error al dirigirse al directorio opt" >>/script/registro.txt
 fi
 
 #Descarga del servidor moodle
 wget https://download.moodle.org/download.php/direct/stable401/moodle-latest-401.tgz >/dev/null 2>&1
 if [ $? -eq 0 ]; then
-    echo "Descargando el archivo moodle en el directorio opt"
+	echo "Descargando el archivo moodle en el directorio opt"
 	echo "Descargando el archivo moodle en el directorio opt" >>/script/registro.txt
 else
-    echo "Error al descargar el archivo moodle"
+	echo "Error al descargar el archivo moodle"
 	echo "Error al descargar el archivo moodle" >>/script/registro.txt
 fi
 
@@ -320,10 +320,10 @@ fi
 #Cambiar de directorio el archivo moodle
 mv moodle/* /var/www/html/ >/dev/null 2>&1
 if [ $? -eq 0 ]; then
-    echo "El cambio de directorio se realizó correctamente"
+	echo "El cambio de directorio se realizó correctamente"
 	echo "El cambio de directorio se realizó correctamente" >>/script/registro.txt
 else
-    echo "Error al cambiar de directorio"
+	echo "Error al cambiar de directorio"
 	echo "Error al cambiar de directorio" >>/script/registro.txt
 fi
 
@@ -340,10 +340,10 @@ fi
 #Añadir los permisos necesarios 
 chmod -R 755 /var/www/ >/dev/null 2>&1
 if [ $? -eq 0 ]; then
-    echo "Se añadieron los permisos necesarios correctamente"
+	echo "Se añadieron los permisos necesarios correctamente"
 	echo "Se añadieron los permisos necesarios correctamente" >>/script/registro.txt
 else
-    echo "No se añadieron los permisos necesarios"
+	echo "No se añadieron los permisos necesarios"
 	echo "No se añadieron los permisos necesarios" >>/script/registro.txt
 fi
 
@@ -351,10 +351,10 @@ fi
 chown -R www-data:www-data /var/www/ >/dev/null 2>&1
 if [ $? -eq 0 ]; then
 	echo "El cambio de propietario se realizó correctamente"
-    echo "El cambio de propietario se realizó correctamente" >>/script/registro.txt
+	echo "El cambio de propietario se realizó correctamente" >>/script/registro.txt
 else
 	echo "Error al cambiar de propietario"
-    echo "Error al cambiar de propietario" >>/script/registro.txt
+	echo "Error al cambiar de propietario" >>/script/registro.txt
 fi
 
 		
