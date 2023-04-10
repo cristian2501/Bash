@@ -11,27 +11,22 @@ fi
 
 #Actualización de paquetes
 
-apt-get update >dev/null 2>&1
+apt-get update >/dev/null 2>&1
 
 #Instalación del paquete LAMP
 
 #Instalación del Apache2
 if [ $(dpkg-query -W -f='${Status}' 'apache2' | grep -c "ok installed") -eq 0 ];then 
-
+	echo "Apache2 no esta instalado"
 	echo "Apache2 no esta instalado" >/script/registro.txt
-
 	apt-get -y install apache2 >/dev/null 2>&1
 
 	if [ $? -eq 0 ];then
-
 		echo "Apache2 se ha instalado correctamente." >/script/registro.txt
 		echo "Apache2 se ha instalado correctamente."
-
 	else
-
 		echo "Apache2 no se ha instalado correctamente." >/script/registro.txt
 		echo "Apache2 se ha instalado correctamente." 
-
 	fi
 else
 	echo "Apache2 ya esta instalado"
@@ -62,7 +57,7 @@ else
 fi
 
 #Instalación del paquete php 7.4
-if [ $(dpkg-query -W -f='${Status}' 'php' | grep -c "ok installed") -eq 0 ];then 
+if [ $(dpkg-query -W -f='${Status}' 'php7.4' | grep -c "ok installed") -eq 0 ];then 
 	echo “PHP no está instalado” >>/script/registro.txt
 	echo “PHP no está instalado”
 
@@ -90,20 +85,16 @@ if [ $(dpkg-query -W -f='${Status}' 'php7.4-xml' | grep -c "ok installed") -eq 0
 	
 	echo "php-xml no esta instalado" 
 	echo "php-xml no esta instalado" >>/script/registro.txt
-
 	apt-get update >/dev/null 2>&1
-	apt-get -y install php 7.4-xml  >/dev/null 2>&1
+	apt-get -y install php7.4-xml  >/dev/null 2>&1
 
 	if [ $? -eq 0 ];then
 
 		echo "php-xml se ha instalado correctamente" >>/script/registro.txt
 		echo "php-xml se ha instalado correctamente"
-
 	else
-
 		echo "php-xml no se ha instalado correctamente"
 		echo "php-xml no se ha instalado correctamente" >>/script/registro.txt
-
 	fi
 else
 	echo "php-xml ya esta instalado" >>/script/registro.txt
@@ -115,19 +106,15 @@ if [ $(dpkg-query -W -f='${Status}' 'php7.4-mbstring' | grep -c "ok installed") 
 	
 	echo "php-mbstring no esta instalado"
 	echo "php-mbstring no esta instalado" >>/script/registro.txt
-
 	apt-get -y install php7.4-mbstring >/dev/null 2>&1
 
 	if [ $? -eq 0 ];then
-
 		echo "php-mbstring se ha instalado correctamente" >>/script/registro.txt
 		echo "php-mbstring se ha instalado correctamente"
 
 	else
-
 		echo "php-mbstring no se ha instalado correctamente"
 		echo "php-mbstring no se ha instalado correctamente" >>/script/registro.txt
-
 	fi
 else
 	echo "php-mbstring ya esta instalado" >>/script/registro.txt
@@ -139,19 +126,14 @@ if [ $(dpkg-query -W -f='${Status}' 'php7.4-curl' | grep -c "ok installed") -eq 
 
 	echo "php-curl no esta instalado"
 	echo "php-curl no esta instalado" >>/script/registro.txt
-
 	apt-get -y install php7.4-curl >/dev/null 2>&1
 
 	if [ $? -eq 0 ];then
-
 		echo "php-curl se ha instalado correctamente" >>/script/registro.txt
 		echo "php-curl se ha instalado correctamente"
-
 	else
-
 		echo "php-curl no se ha instalado correctamente"
 		echo "php-curl no se ha instalado correctamente" >>/script/registro.txt
-
 	fi
 else
 	echo "php-curl ya esta instalado" >>/script/registro.txt
@@ -163,19 +145,14 @@ if [ $(dpkg-query -W -f='${Status}' 'php7.4-zip' | grep -c "ok installed") -eq 0
 
 	echo "php-zip no esta instalado"
 	echo "php-zip no esta instalado" >>/script/registro.txt
-
 	apt-get -y install php7.4-zip >/dev/null 2>&1
 
 	if [ $? -eq 0 ];then
-
 		echo "php-zip se ha instalado correctamente" >>/script/registro.txt
 		echo "php-zip se ha instalado correctamente"
-
 	else
-
 		echo "php-zip no se ha instalado correctamente"
 		echo "php-zip no se ha instalado correctamente" >>/script/registro.txt
-
 	fi
 else
 	echo "php-zip ya esta instalado" >>/script/registro.txt
@@ -183,23 +160,19 @@ else
 fi
 
 # Instalación de php-gd
-if [ $(dpkg-query -W -f='${Status}' 'php7.4-gd' | grep -c "ok installed") -eq 0 ];then 
+if [ $(dpkg-query -W -f='${Status}' 'php7.4-gd' | grep -c "ok installed") -eq 0 ];then
 
 	echo "php-zip no esta instalado"
 	echo "php-zip no esta instalado" >>/script/registro.txt
-
 	apt-get -y install php7.4-gd >/dev/null 2>&1
 
 	if [ $? -eq 0 ];then
-
 		echo "php-gd se ha instalado correctamente" >>/script/registro.txt
 		echo "php-gd se ha instalado correctamente"
 
 	else
-
 		echo "php-gd no se ha instalado correctamente"
 		echo "php-gd no se ha instalado correctamente" >>/script/registro.txt
-
 	fi
 else
 	echo "php-gd ya esta instalado" >>/script/registro.txt
@@ -211,19 +184,14 @@ if [ $(dpkg-query -W -f='${Status}' 'php7.4-intl' | grep -c "ok installed") -eq 
 
 	echo "php-zip no esta instalado"
 	echo "php-zip no esta instalado" >>/script/registro.txt
-
 	apt-get -y install php7.4-intl >/dev/null 2>&1
 
 	if [ $? -eq 0 ];then
-
 		echo "php-intl se ha instalado correctamente" >>/script/registro.txt
 		echo "php-intl se ha instalado correctamente"
-
 	else
-
 		echo "php-intl no se ha instalado correctamente"
 		echo "php-intl no se ha instalado correctamente" >>/script/registro.txt
-
 	fi
 else
 	echo "php-intl ya esta instalado" >>/script/registro.txt
@@ -235,19 +203,14 @@ if [ $(dpkg-query -W -f='${Status}' 'php7.4-soap' | grep -c "ok installed") -eq 
 
 	echo "php-soap no esta instalado"
 	echo "php-soap no esta instalado" >>/script/registro.txt
-
 	apt-get -y install php7.4-soap >/dev/null 2>&1
 
 	if [ $? -eq 0 ];then
-
 		echo "php-soap se ha instalado correctamente" >>/script/registro.txt
 		echo "php-soap se ha instalado correctamente"
-
 	else
-
 		echo "php-soap no se ha instalado correctamente"
 		echo "php-soap no se ha instalado correctamente" >>/script/registro.txt
-
 	fi
 else
 	echo "php-soap ya esta instalado" >>/script/registro.txt
@@ -257,7 +220,7 @@ fi
 #Creación de la base de datos para el servidor y Comprobación de que la base de datos ha sido creada
 
 dbname="moodle"
-if [ -d "/var/lib/mysql/$dbname" ]; then   (-d = directorio)
+if [ -d "/var/lib/mysql/$dbname" ]; then
 	echo "La base de datos moodle existe"
 	echo "La base de datos moodle existe" >>/script/registro.txt
 else 	
@@ -267,8 +230,8 @@ else
 	echo "Iniciando la instalación de la base de datos moodle" >>/script/registro.txt
 
 	mysql -u root -e "CREATE DATABASE moodle;"
-	mysql -u root -e "CREATE USER 'moodle'@'localhost' IDENTIFIED BY 'moodle';"
-	mysql -u root -e "GRANT ALL PRIVILEGES ON moodle.* TO 'moodle'@'localhost';
+	mysql -u root -e "CREATE USER 'moodle'@'localhost' IDENTIFIED by 'moodle';"
+	mysql -u root -e "GRANT ALL PRIVILEGES ON moodle.* TO 'moodle'@'localhost';"
 	mysql -u root -e "FLUSH PRIVILEGES;"
 	mysql -u root -e "quit;"
 	
@@ -308,7 +271,7 @@ else
 fi
 
 #Eliminación del fichero index
-rm /vat/www/html/index.html >/dev/null 2>&1
+rm /var/www/html/index.html >/dev/null 2>&1
 if [ $? -eq 0 ];then
 	echo "La eliminación del fichero index fue exitosa"
 	echo "La eliminación del fichero index fue exitosa" >>/script/registro.txt
@@ -318,7 +281,7 @@ else
 fi
 
 #Cambiar de directorio el archivo moodle
-mv moodle/* /var/www/html/ >/dev/null 2>&1
+mv moodle/ /var/www/html/ >/dev/null 2>&1
 if [ $? -eq 0 ]; then
 	echo "El cambio de directorio se realizó correctamente"
 	echo "El cambio de directorio se realizó correctamente" >>/script/registro.txt
@@ -357,4 +320,4 @@ else
 	echo "Error al cambiar de propietario" >>/script/registro.txt
 fi
 
-		
+echo "Instalación del servidor moodle finalizada"
