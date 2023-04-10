@@ -40,8 +40,8 @@ fi
 #Instalación del paquete mariadb-server versión 10.4
 
 if [ $(dpkg-query -W -f='${Status}' 'mariadb-server' | grep -c "ok installed") -eq 0 ];then 
-	echo "Mariadv-server no esta instalado" 
-	echo "Mariadv-server no esta instalado" >>/script/registro.txt
+	echo "Mariadb-server no esta instalado" 
+	echo "Mariadb-server no esta instalado" >>/script/registro.txt
 
 	apt-get install software-propierties-common dirmngr >/dev/null 2>&1
 	apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xF1656F24C74CD1D8 >/dev/null 2>&1
@@ -68,7 +68,7 @@ if [ $(dpkg-query -W -f='${Status}' 'php' | grep -c "ok installed") -eq 0 ];then
 
 	apt -y install lsb-release apt-transport-https ca-certificates >/dev/null 2>&1
 	wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg >/dev/null 2>&1
-	echo “deb https://packages.sury.org/php/ $( lsb_release -sc) main” | tee /etc/apt/sources.list.d/php.list >/dev/null 2>&1
+	echo "deb https://packages.sury.org/php/ $( lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list >/dev/null 2>&1
 	apt-get update >/dev/null 2>&1
 	apt-get install php7.4 >/dev/null 2>&1
 	if [ $? -eq 0 ];then
@@ -91,6 +91,7 @@ if [ $(dpkg-query -W -f='${Status}' 'php7.4-xml' | grep -c "ok installed") -eq 0
 	echo "php-xml no esta instalado" 
 	echo "php-xml no esta instalado" >>/script/registro.txt
 
+	apt-get update >/dev/null 2>&1
 	apt-get install php 7.4-xml  >/dev/null 2>&1
 
 	if [ $? -eq 0 ];then
