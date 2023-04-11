@@ -34,14 +34,55 @@ fi
 
 #Instalación del paquete mariadb-server versión 10.4
 
+#Instalación del software-propierties-common dirmngr
+if [ $(dpkg-query -W -f='${Status}' 'software-propierties-common dirmngr' | grep -c "ok installed") -eq 0 ];then 
+	echo "software-propierties-common dirmngr no esta instalado" 
+	echo "software-propierties-common dirmngr no esta instalado" >>/script/registro.txt
+
+	apt-get -y install software-propierties-common dirmngr >/dev/null 2>&1
+	if [ $? -eq 0 ];then
+		echo "software-propierties-common dirmngr se ha instalado correctamente." >>/script/registro.txt
+		echo "software-propierties-common dirmngr se ha instalado correctamente."
+	else
+		echo "software-propierties-common dirmngr no se ha instalado correctamente." >>/script/registro.txt
+		echo "software-propierties-common dirmngr no se ha instalado correctamente."
+	fi
+else
+	echo "software-propierties-common dirmngr esta instalado" >>/script/registro.txt
+	echo "software-propierties-common dirmngr esta instalado" 
+fi
+
+#Inserción de la clave
+apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xF1656F24C74CD1D8 >/dev/null 2>&1
+
+if [ $? -eq 0 ];then
+	echo "La clave se colocó correctamente"
+	echo "La clave se colocó correctamente" >>/script/registro.txt
+else
+	echo "Error en la clave"
+	echo "Error en la clave" >>/script/registro.txt
+fi
+
+#Repositorio del mariadb
+add-apt-repository 'deb [arch=amd64] http://mirror.rackspace.com/mariadb/repo/10.4/debian buster main' >/dev/null 2>&1
+
+if [ $? -eq 0 ];then
+	echo "El repositorio se colocó correctamente"
+	echo "El repositorio se colocó correctamente" >>/script/registro.txt
+else
+	echo "El repositorio no se coloco correctamente"
+	echo "El repositorio no se coloco correctamente" >>/script/registro.txt
+fi
+
+#Actualización de los paquetes
+apt-get update >/dev/null 2>&1
+
+
+#Instalación del mariadb-server 
 if [ $(dpkg-query -W -f='${Status}' 'mariadb-server' | grep -c "ok installed") -eq 0 ];then 
 	echo "Mariadb-server no esta instalado" 
 	echo "Mariadb-server no esta instalado" >>/script/registro.txt
 
-	apt-get -y install software-propierties-common dirmngr >/dev/null 2>&1
-	apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xF1656F24C74CD1D8 >/dev/null 2>&1
-	add-apt-repository 'deb [arch=amd64] http://mirror.rackspace.com/mariadb/repo/10.4/debian buster main' >/dev/null 2>&1
-	apt-get update >/dev/null 2>&1
 	apt-get -y install mariadb-server >/dev/null 2>&1
 
 	if [ $? -eq 0 ];then
