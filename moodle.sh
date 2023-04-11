@@ -40,10 +40,10 @@ if [ $(dpkg-query -W -f='${Status}' 'mariadb-server' | grep -c "ok installed") -
 
 	apt-get install software-propierties-common dirmngr >/dev/null 2>&1
 	apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xF1656F24C74CD1D8 >/dev/null 2>&1
-	add-apt-repository ‘deb [arch=amd64] http://mirror.rackspace.com/mariadb/repo/10.4/debian buster main’ >/dev/null 2>&1
+	add-apt-repository 'deb [arch=amd64] http://mirror.rackspace.com/mariadb/repo/10.4/debian buster main' >/dev/null 2>&1
 	apt-get update >/dev/null 2>&1
 	apt-get -y install mariadb-server >/dev/null 2>&1
-	
+
 	if [ $? -eq 0 ];then
 		echo "Mariadb-server se ha instalado correctamente." >>/script/registro.txt
 		echo "Mariadb-server se ha instalado correctamente."
@@ -79,6 +79,27 @@ else
 fi
 
 # Instalación de las expansiones de php
+
+# Instalación de php-mysql
+if [ $(dpkg-query -W -f='${Status}' 'php7.4-mysql' | grep -c "ok installed") -eq 0 ];then 
+	
+	echo "php-myslq no esta instalado" 
+	echo "php-mysql no esta instalado" >>/script/registro.txt
+	apt-get update >/dev/null 2>&1
+	apt-get -y install php7.4-mysql  >/dev/null 2>&1
+
+	if [ $? -eq 0 ];then
+
+		echo "php-mysql se ha instalado correctamente" >>/script/registro.txt
+		echo "php-mysql se ha instalado correctamente"
+	else
+		echo "php-mysql no se ha instalado correctamente"
+		echo "php-mysql no se ha instalado correctamente" >>/script/registro.txt
+	fi
+else
+	echo "php-mysql ya esta instalado" >>/script/registro.txt
+	echo "php-mysql ya esta instalado"
+fi
 
 # Instalación de php-xml
 if [ $(dpkg-query -W -f='${Status}' 'php7.4-xml' | grep -c "ok installed") -eq 0 ];then 
@@ -320,4 +341,21 @@ else
 	echo "Error al cambiar de propietario" >>/script/registro.txt
 fi
 
-echo "Instalación del servidor moodle finalizada"
+#actualización de los paquetes y reinicio del servidor apache
+apt-get -y upgrade
+if [ $? -eq 0 ]; then
+	echo "La actualización se realizó correctamente"
+	echo "La actualización se realizó correctamente" >>/script/registro.txt
+else
+	echo "Error en la actualización"
+	echo "Error en la actualización" >>/script/registro.txt
+fi
+
+systemctl restart apache2
+if [ $? -eq 0 ]; then
+	echo "Reinicio correcto"
+	echo "Reinicio correcto" >>/script/registro.txt
+else
+	echo "Error al reiniciar el servidor"
+	echo "Error al reiniciar el servidor" >>/script/registro.txt
+fi
