@@ -35,21 +35,21 @@ fi
 #Instalación del paquete mariadb-server versión 10.4
 
 #Instalación del software-propierties-common 
-if [ $(dpkg-query -W -f='${Status}' 'software-propierties-common' | grep -c "ok installed") -eq 0 ];then 
-	echo "software-propierties-common no esta instalado" 
-	echo "software-propierties-common no esta instalado" >>/script/registro.txt
+if [ $(dpkg-query -W -f='${Status}' 'software-properties-common' | grep -c "ok installed") -eq 0 ];then 
+	echo "software-properties-common no esta instalado" 
+	echo "software-properties-common no esta instalado" >>/script/registro.txt
 
-	apt-get -y install software-propierties-common  >/dev/null 2>&1
+	apt-get -y install software-properties-common  >/dev/null 2>&1
 	if [ $? -eq 0 ];then
-		echo "software-propierties-common se ha instalado correctamente." >>/script/registro.txt
-		echo "software-propierties-common se ha instalado correctamente."
+		echo "software-properties-common se ha instalado correctamente." >>/script/registro.txt
+		echo "software-properties-common se ha instalado correctamente."
 	else
-		echo "software-propierties-common no se ha instalado correctamente." >>/script/registro.txt
-		echo "software-propierties-common no se ha instalado correctamente."
+		echo "software-properties-common no se ha instalado correctamente." >>/script/registro.txt
+		echo "software-properties-common no se ha instalado correctamente."
 	fi
 else
-	echo "software-propierties-common esta instalado" >>/script/registro.txt
-	echo "software-propierties-common esta instalado" 
+	echo "software-properties-common esta instalado" >>/script/registro.txt
+	echo "software-properties-common esta instalado" 
 fi
 
 #Instalación del dirmngr
@@ -101,6 +101,8 @@ if [ $(dpkg-query -W -f='${Status}' 'mariadb-server' | grep -c "ok installed") -
 	echo "Mariadb-server no esta instalado" 
 	echo "Mariadb-server no esta instalado" >>/script/registro.txt
 
+	apt-get -y install mariadb-server >/dev/null 2>&1
+	apt-get update >/dev/null 2>&1
 	apt-get -y install mariadb-server >/dev/null 2>&1
 
 	if [ $? -eq 0 ];then
@@ -262,8 +264,8 @@ fi
 # Instalación de php-intl
 if [ $(dpkg-query -W -f='${Status}' 'php7.4-intl' | grep -c "ok installed") -eq 0 ];then 
 
-	echo "php-zip no esta instalado"
-	echo "php-zip no esta instalado" >>/script/registro.txt
+	echo "php-intl no esta instalado"
+	echo "php-intl no esta instalado" >>/script/registro.txt
 	apt-get -y install php7.4-intl >/dev/null 2>&1
 
 	if [ $? -eq 0 ];then
