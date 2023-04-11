@@ -34,22 +34,40 @@ fi
 
 #Instalación del paquete mariadb-server versión 10.4
 
-#Instalación del software-propierties-common dirmngr
-if [ $(dpkg-query -W -f='${Status}' 'software-propierties-common dirmngr' | grep -c "ok installed") -eq 0 ];then 
-	echo "software-propierties-common dirmngr no esta instalado" 
-	echo "software-propierties-common dirmngr no esta instalado" >>/script/registro.txt
+#Instalación del software-propierties-common 
+if [ $(dpkg-query -W -f='${Status}' 'software-propierties-common' | grep -c "ok installed") -eq 0 ];then 
+	echo "software-propierties-common no esta instalado" 
+	echo "software-propierties-common no esta instalado" >>/script/registro.txt
 
-	apt-get -y install software-propierties-common dirmngr >/dev/null 2>&1
+	apt-get -y install software-propierties-common  >/dev/null 2>&1
 	if [ $? -eq 0 ];then
-		echo "software-propierties-common dirmngr se ha instalado correctamente." >>/script/registro.txt
-		echo "software-propierties-common dirmngr se ha instalado correctamente."
+		echo "software-propierties-common se ha instalado correctamente." >>/script/registro.txt
+		echo "software-propierties-common se ha instalado correctamente."
 	else
-		echo "software-propierties-common dirmngr no se ha instalado correctamente." >>/script/registro.txt
-		echo "software-propierties-common dirmngr no se ha instalado correctamente."
+		echo "software-propierties-common no se ha instalado correctamente." >>/script/registro.txt
+		echo "software-propierties-common no se ha instalado correctamente."
 	fi
 else
-	echo "software-propierties-common dirmngr esta instalado" >>/script/registro.txt
-	echo "software-propierties-common dirmngr esta instalado" 
+	echo "software-propierties-common esta instalado" >>/script/registro.txt
+	echo "software-propierties-common esta instalado" 
+fi
+
+#Instalación del dirmngr
+if [ $(dpkg-query -W -f='${Status}' 'dirmngr' | grep -c "ok installed") -eq 0 ];then 
+	echo "dirmngr no esta instalado" 
+	echo "dirmngr no esta instalado" >>/script/registro.txt
+
+	apt-get -y install dirmngr >/dev/null 2>&1
+	if [ $? -eq 0 ];then
+		echo "dirmngr se ha instalado correctamente." >>/script/registro.txt
+		echo "dirmngr se ha instalado correctamente."
+	else
+		echo "dirmngr no se ha instalado correctamente." >>/script/registro.txt
+		echo "dirmngr no se ha instalado correctamente."
+	fi
+else
+	echo "dirmngr esta instalado" >>/script/registro.txt
+	echo "dirmngr esta instalado" 
 fi
 
 #Inserción de la clave
