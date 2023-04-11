@@ -38,7 +38,7 @@ if [ $(dpkg-query -W -f='${Status}' 'mariadb-server' | grep -c "ok installed") -
 	echo "Mariadb-server no esta instalado" 
 	echo "Mariadb-server no esta instalado" >>/script/registro.txt
 
-	apt-get install software-propierties-common dirmngr >/dev/null 2>&1
+	apt-get -y install software-propierties-common dirmngr >/dev/null 2>&1
 	apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xF1656F24C74CD1D8 >/dev/null 2>&1
 	add-apt-repository 'deb [arch=amd64] http://mirror.rackspace.com/mariadb/repo/10.4/debian buster main' >/dev/null 2>&1
 	apt-get update >/dev/null 2>&1
@@ -58,8 +58,8 @@ fi
 
 #Instalación del paquete php 7.4
 if [ $(dpkg-query -W -f='${Status}' 'php7.4' | grep -c "ok installed") -eq 0 ];then 
-	echo “PHP no está instalado” >>/script/registro.txt
-	echo “PHP no está instalado”
+	echo "PHP no está instalado" >>/script/registro.txt
+	echo "PHP no está instalado"
 
 	apt -y install lsb-release apt-transport-https ca-certificates >/dev/null 2>&1
 	wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg >/dev/null 2>&1
@@ -254,7 +254,7 @@ else
 	mysql -u root -e "CREATE USER 'moodle'@'localhost' IDENTIFIED by 'moodle';"
 	mysql -u root -e "GRANT ALL PRIVILEGES ON moodle.* TO 'moodle'@'localhost';"
 	mysql -u root -e "FLUSH PRIVILEGES;"
-	mysql -u root -e "quit;"
+	mysql -u root -e "exit"
 	
 	echo "Instalación hecha" >>/script/registro.txt
 	echo "Instalación hecha"  
@@ -342,8 +342,8 @@ else
 fi
 
 #actualización de los paquetes y reinicio del servidor apache
-apt-get -y upgrade
-if [ $? -eq 0 ]; then
+apt-get -y upgrade >/dev/null 2>&1
+if [ $? -eq 0 ];then
 	echo "La actualización se realizó correctamente"
 	echo "La actualización se realizó correctamente" >>/script/registro.txt
 else
@@ -351,8 +351,8 @@ else
 	echo "Error en la actualización" >>/script/registro.txt
 fi
 
-systemctl restart apache2
-if [ $? -eq 0 ]; then
+systemctl restart apache2 >/dev/null 2>&1
+if [ $? -eq 0 ];then
 	echo "Reinicio correcto"
 	echo "Reinicio correcto" >>/script/registro.txt
 else
