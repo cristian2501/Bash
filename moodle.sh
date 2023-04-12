@@ -9,11 +9,11 @@ subrayado='\e[4m'
 
 #Lista de todos los paquetes
 echo "Esta apunto de instalar el servidor moodle y con ello todos los siguientes paquetes: "
-echo "${Azul}1)apache2 2)mariadb-server 3)php 4)php-mysql 5)php-zip 6)php-curl 7)php-xml 8)php-mbstring"
-echo "9)php-gd 10)php-soap 11)php-intl 12)software-properties-common 13)dirmngr${Defecto}"
-
+echo -e "${Azul}1)apache2 2)mariadb-server 3)php 4)php-mysql 5)php-zip 6)php-curl 7)php-xml 8)php-mbstring"
+echo -e "9)php-gd 10)php-soap 11)php-intl 12)software-properties-common 13)dirmngr${Defecto}"
+confirmacion;
 #Confirmación de la instalación
-read -p "${subrayado}Estas seguro de proceder con la instalación (S/N):${Defecto} " confirmacion
+read -p "Estas seguro de proceder con la instalación (S/N): " 
 if [ "${confirmacion}" != "S" ];then
 	exit
 else
