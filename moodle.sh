@@ -119,11 +119,10 @@ apt-get update >/dev/null 2>&1
 
 
 #Instalación del mariadb-server 
-if [ $(dpkg-query -W -f='${Status}' 'mariadb-server' | grep -c "ok installed") -eq 0 ];then 
+if [ $(dpkg-query -W -f='${Status}' 'mariadb-server-10.4' | grep -c "ok installed") -eq 0 ];then 
 	echo -e "${Azul}Mariadb-server${Defecto} no esta instalado" 
 	echo "Mariadb-server no esta instalado" >>/script/registro.txt
 
-	apt-get -y install mariadb-server >/dev/null 2>&1
 	apt-get update >/dev/null 2>&1
 	apt-get -y install mariadb-server >/dev/null 2>&1
 
