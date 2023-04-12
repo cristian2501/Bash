@@ -4,7 +4,7 @@
 Defecto='\e[39m'
 Rojo='\e[31m'
 Verde='\e[32m'
-Azul='\e[34m'
+Azul='\e[36m'
 subrayado='\e[4m' 
 
 #Lista de todos los paquetes
@@ -35,7 +35,7 @@ apt-get update >/dev/null 2>&1
 #Instalación del paquete LAMP
 
 #Instalación del Apache2
-if [ $(dpkg-query -W -f='${Status}' 'apache2' | grep -c "ok installed") -eq 0 ];then 
+if [ $(dpkg-query -W -f='${Status}' 'apache2' | grep -c "ok installed") -eq 0 ] >/dev/null 2>&1; then 
 	echo -e "${Azul}Apache2${Defecto} no esta instalado"
 	echo -e "${Azul}Apache2${Defecto} no esta instalado" >/script/registro.txt
 	apt-get -y install apache2 >/dev/null 2>&1
