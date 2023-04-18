@@ -384,7 +384,7 @@ else
 fi
 
 #Cambiar de directorio el archivo RoundCube
-mv moodle/ /var/www/html/ >/dev/null 2>&1
+mv roundcubemail-1.6.1/ /var/www/html/ >/dev/null 2>&1
 if [ $? -eq 0 ]; then
 	echo -e "${Verde}El cambio de directorio se realizó correctamente${Defecto}"
 	echo "El cambio de directorio se realizó correctamente" >>/script/registro.txt
