@@ -37,7 +37,7 @@ apt-get update >/dev/null 2>&1
 #Instalación del paquete LAMP
 
 #Instalación del Apache2
-if [ $(dpkg-query -W -f='${Status}' 'apache2' | grep -c "ok installed") -eq 0 ] >/dev/null 2>&1; then 
+if [ $(dpkg-query -W -f='${Status}' 'apache2' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ]; then 
 	echo -e "${Azul}Apache2${Defecto} no esta instalado"
 	echo  "Apache2 no está instalado" >/script/registro.txt
 	apt-get -y install apache2 >/dev/null 2>&1
