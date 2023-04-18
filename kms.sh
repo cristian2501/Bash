@@ -32,14 +32,23 @@ apt-get update >/dev/null 2>&1
 #Instalación del servidor KMS
 
 #Descarga del kms
+cd /opt/
+if [ $? -eq 0 ];then
+	echo "redireccion correcta" >/script/registro.txt
+	echo -e "${Verde}redireccion correcta${Defecto}"
+else
+	echo "redireccion correcta"  >>/script/registro.txt
+	echo -e "${Verde}redireccion correcta${Defecto}"
+fi
+
 wget https://github.com/SystemRage/py-kms/archive/refs/heads/master.zip
 if [ $? -eq 0 ];then
-		echo "Apache2 se ha instalado correctamente" >>/script/registro.txt
-		echo -e "${Celeste}Apache2${Defecto} ${Verde}se ha instalado correctamente${Defecto}"
-	else
-		echo "Apache2 no se ha instalado correctamente "  >>/script/registro.txt
-		echo -e "${Celeste}Apache2${Defecto} ${Rojo}no se ha instalado correctamente ${Defecto}" 
-	fi
+	echo "Apache2 se ha instalado correctamente" >>/script/registro.txt
+	echo -e "${Celeste}Apache2${Defecto} ${Verde}se ha instalado correctamente${Defecto}"
+else
+	echo "Apache2 no se ha instalado correctamente "  >>/script/registro.txt
+	echo -e "${Celeste}Apache2${Defecto} ${Rojo}no se ha instalado correctamente ${Defecto}" 
+fi
 
 #Paquete necesario para la extracion de la carpeta KMS
 if [ $(dpkg-query -W -f='${Status}' 'unzip' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then
@@ -60,4 +69,12 @@ else
 	echo -e "${Celeste}unzip${Defecto} ya está instalado"
 fi
 
-#Creación de un directorio donde estara el kms 
+unzip master.zip
+
+chmod 755 kms/
+
+mv kms/ /srv/
+
+mkdir /systemd/system/kms.service
+
+echo "ruta="/srv/kms/py-kms/pykms_Server.py"" | tee /systemd/system/kms.service
