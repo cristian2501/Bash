@@ -57,7 +57,7 @@ fi
 #Instalación del paquete mariadb-server versión 10.4
 
 #Instalación del software-propierties-common 
-if [ $(dpkg-query -W -f='${Status}' 'software-properties-common' | grep -c "ok installed") -eq 0 ];then 
+if [ $(dpkg-query -W -f='${Status}' 'software-properties-common' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then 
 	echo -e "${Azul}software-properties-common${Defecto} no está instalado" 
 	echo "software-properties-common no está instalado" >>/script/registro.txt
 
@@ -75,7 +75,7 @@ else
 fi
 
 #Instalación del dirmngr
-if [ $(dpkg-query -W -f='${Status}' 'dirmngr' | grep -c "ok installed") -eq 0 ];then 
+if [ $(dpkg-query -W -f='${Status}' 'dirmngr' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then 
 	echo -e "${Azul}dirmngr${Defecto} no está instalado" 
 	echo "dirmngr no está instalado" >>/script/registro.txt
 
@@ -119,7 +119,7 @@ apt-get update >/dev/null 2>&1
 
 
 #Instalación del mariadb-server 
-if [ $(dpkg-query -W -f='${Status}' 'mariadb-server-10.4' | grep -c "ok installed") -eq 0 ];then 
+if [ $(dpkg-query -W -f='${Status}' 'mariadb-server-10.4' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then 
 	echo -e "${Azul}Mariadb-server${Defecto} no está instalado" 
 	echo "Mariadb-server no está instalado" >>/script/registro.txt
 
@@ -139,7 +139,7 @@ else
 fi
 
 #Instalación del paquete php 7.4
-if [ $(dpkg-query -W -f='${Status}' 'php7.4' | grep -c "ok installed") -eq 0 ];then 
+if [ $(dpkg-query -W -f='${Status}' 'php7.4' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then 
 	echo "Php no está instalado" >>/script/registro.txt
 	echo -e "${Azul}Php${Defecto} no está instalado"
 
@@ -163,7 +163,7 @@ fi
 # Instalación de las expansiones de php
 
 # Instalación de php-mysql
-if [ $(dpkg-query -W -f='${Status}' 'php7.4-mysql' | grep -c "ok installed") -eq 0 ];then 
+if [ $(dpkg-query -W -f='${Status}' 'php7.4-mysql' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then 
 	
 	echo -e "${Azul}php-mysql${Defecto} no está instalado" 
 	echo "php-mysql no está instalado" >>/script/registro.txt
@@ -184,7 +184,7 @@ else
 fi
 
 # Instalación de php-xml
-if [ $(dpkg-query -W -f='${Status}' 'php7.4-xml' | grep -c "ok installed") -eq 0 ];then 
+if [ $(dpkg-query -W -f='${Status}' 'php7.4-xml' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then 
 	
 	echo -e "${Azul}php-xml${Defecto} no está instalado" 
 	echo "php-xml no está instalado" >>/script/registro.txt
@@ -205,7 +205,7 @@ else
 fi
 
 # Instalación de php-mbstring
-if [ $(dpkg-query -W -f='${Status}' 'php7.4-mbstring' | grep -c "ok installed") -eq 0 ];then 
+if [ $(dpkg-query -W -f='${Status}' 'php7.4-mbstring' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then 
 	
 	echo -e "${Azul}php-mbstring${Defecto} no está instalado"
 	echo "php-mbstring no está instalado" >>/script/registro.txt
@@ -225,7 +225,7 @@ else
 fi
 
 # Instalación de php-curl
-if [ $(dpkg-query -W -f='${Status}' 'php7.4-curl' | grep -c "ok installed") -eq 0 ];then 
+if [ $(dpkg-query -W -f='${Status}' 'php7.4-curl' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then 
 
 	echo -e "${Azul}php-curl${Defecto} no está instalado"
 	echo "php-curl no está instalado" >>/script/registro.txt
@@ -244,7 +244,7 @@ else
 fi
 
 # Instalación de php-zip
-if [ $(dpkg-query -W -f='${Status}' 'php7.4-zip' | grep -c "ok installed") -eq 0 ];then
+if [ $(dpkg-query -W -f='${Status}' 'php7.4-zip' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then
 
 	echo -e "${Azul}php-zip${Defecto} no está instalado"
 	echo "php-zip no está instalado" >>/script/registro.txt
@@ -263,7 +263,7 @@ else
 fi
 
 # Instalación de php-gd
-if [ $(dpkg-query -W -f='${Status}' 'php7.4-gd' | grep -c "ok installed") -eq 0 ];then
+if [ $(dpkg-query -W -f='${Status}' 'php7.4-gd' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then
 
 	echo -e "${Azul}php-gd${Defecto} no está instalado"
 	echo "php-gd no está instalado" >>/script/registro.txt
@@ -283,7 +283,7 @@ else
 fi
 
 # Instalación de php-intl
-if [ $(dpkg-query -W -f='${Status}' 'php7.4-intl' | grep -c "ok installed") -eq 0 ];then
+if [ $(dpkg-query -W -f='${Status}' 'php7.4-intl' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then
 
 	echo -e "${Azul}php-intl${Defecto} no está instalado"
 	echo "php-intl no está instalado" >>/script/registro.txt
@@ -302,7 +302,7 @@ else
 fi
 
 # Instalación de php-soap
-if [ $(dpkg-query -W -f='${Status}' 'php7.4-soap' | grep -c "ok installed") -eq 0 ];then
+if [ $(dpkg-query -W -f='${Status}' 'php7.4-soap' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then
 
 	echo -e "${Azul}php-soap${Defecto} no está instalado"
 	echo "php-soap no está instalado" >>/script/registro.txt
