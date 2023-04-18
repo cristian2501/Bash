@@ -10,7 +10,8 @@ subrayado='\e[4m'
 #Lista de todos los paquetes
 echo "Esta apunto de instalar el servidor RoundCube y con ello todos los siguientes paquetes: "
 echo -e "${Azul}1)apache2 2)mariadb-server 3)php 4)php-mysql 5)php-zip 6)php-curl 7)php-xml 8)php-mbstring"
-echo -e "9)php-gd 10)php-soap 11)php-intl 12)software-properties-common 13)dirmngr${Defecto}"
+echo -e "9)php-gd 10)php-soap 11)php-intl 12)software-properties-common 13)dirmngr 14)php-imagick"
+echo -e "15)php7.4-ldap  ${Defecto}"
 
 #Confirmación de la instalación
 echo "Estas seguro de proceder con la instalación (S/N): " 
@@ -318,6 +319,44 @@ if [ $(dpkg-query -W -f='${Status}' 'php7.4-soap' >/dev/null 2>&1 | grep -c "ok 
 else
 	echo "php-soap ya está instalado" >>/script/registro.txt
 	echo -e "${Azul}php-soap${Defecto} ya está instalado"
+fi
+
+# Instalación de php-imagick
+if [ $(dpkg-query -W -f='${Status}' 'php7.4-imagick' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then
+
+	echo -e "${Azul}php-imagick${Defecto} no está instalado"
+	echo "php-imagick no está instalado" >>/script/registro.txt
+	apt-get -y install php7.4-imagick >/dev/null 2>&1
+
+	if [ $? -eq 0 ];then
+		echo "php-imagick se ha instalado correctamente" >>/script/registro.txt
+		echo -e "${Azul}php-imagick${Defecto} ${Verde}se ha instalado correctamente${Defecto}"
+	else
+		echo -e "${Azul}php-imagick${Defecto} ${Rojo}no se ha instalado correctamente${Defecto}"
+		echo "php-imagick no se ha instalado correctamente" >>/script/registro.txt
+	fi
+else
+	echo "php-imagick ya está instalado" >>/script/registro.txt
+	echo -e "${Azul}php-imagick${Defecto} ya está instalado"
+fi
+
+# Instalación de php-ldap
+if [ $(dpkg-query -W -f='${Status}' 'php7.4-ldap' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then
+
+	echo -e "${Azul}php-ldap${Defecto} no está instalado"
+	echo "php-ldap no está instalado" >>/script/registro.txt
+	apt-get -y install php7.4-ldap >/dev/null 2>&1
+
+	if [ $? -eq 0 ];then
+		echo "php-ldap se ha instalado correctamente" >>/script/registro.txt
+		echo -e "${Azul}php-ldap${Defecto} ${Verde}se ha instalado correctamente${Defecto}"
+	else
+		echo -e "${Azul}php-ldap${Defecto} ${Rojo}no se ha instalado correctamente${Defecto}"
+		echo "php-ldap no se ha instalado correctamente" >>/script/registro.txt
+	fi
+else
+	echo "php-ldap ya está instalado" >>/script/registro.txt
+	echo -e "${Azul}php-ldap${Defecto} ya está instalado"
 fi
 
 #Creación de la base de datos para el servidor y Comprobación de que la base de datos ha sido creada
