@@ -380,7 +380,7 @@ else
 fi
 
 # Instalación de php-bz2
-if [ $(dpkg-query -W -f='${Status}' 'php7.4-ldap' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then
+if [ $(dpkg-query -W -f='${Status}' 'php7.4-bz2' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then
 
 	echo -e "${Celeste}php-bz2${Defecto} no está instalado"
 	echo "php-bz2 no está instalado" >>/var/logs/registres/install/glpi.log
@@ -398,8 +398,8 @@ else
 	echo -e "${Celeste}php-bz2${Defecto} ya está instalado"
 fi
 
-# Instalación de php-bz2
-if [ $(dpkg-query -W -f='${Status}' 'php7.4-ldap' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then
+# Instalación de php-apcu
+if [ $(dpkg-query -W -f='${Status}' 'php7.4-apcu' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then
 
 	echo -e "${Celeste}php-apcu${Defecto} no está instalado"
 	echo "php-apcu no está instalado" >>/var/logs/registres/install/glpi.log
@@ -417,8 +417,8 @@ else
 	echo -e "${Celeste}php-apcu${Defecto} ya está instalado"
 fi
 
-# Instalación de php-bz2
-if [ $(dpkg-query -W -f='${Status}' 'php7.4-ldap' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then
+# Instalación de php-xmlrpc
+if [ $(dpkg-query -W -f='${Status}' 'php7.4-xmlrpc' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then
 
 	echo -e "${Celeste}php-xmlrpc${Defecto} no está instalado"
 	echo "php-xmlrpc no está instalado" >>/var/logs/registres/install/glpi.log
