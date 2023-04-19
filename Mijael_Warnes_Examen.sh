@@ -36,6 +36,7 @@ else
 	exit
 fi		
 
+mkdir /var/logs/registres/install/
 #Comprobación de usuario
 if [ $(whoami) == "root" ]; then
 	echo -e "Tienes los permisos"
