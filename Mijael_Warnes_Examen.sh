@@ -57,58 +57,58 @@ apt-get update >/dev/null 2>&1
 echo -e "${Lila}Instalando apache${Defecto}"
 #Instalación del Apache2
 if [ $(dpkg-query -W -f='${Status}' 'apache2' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ]; then 
-	echo -e "${Azul}Apache2${Defecto} no esta instalado"
+	echo -e "${Celeste}Apache2${Defecto} no esta instalado"
 	echo  "Apache2 no está instalado" >/var/logs/registres/install/glpi.log
 	apt-get -y install apache2 >/dev/null 2>&1
 
 	if [ $? -eq 0 ];then
 		echo "Apache2 se ha instalado correctamente" >>/var/logs/registres/install/glpi.log
-		echo -e "${Azul}Apache2${Defecto} ${Celeste}se ha instalado correctamente${Defecto}"
+		echo -e "${Celeste}Apache2${Defecto} ${Celeste}se ha instalado correctamente${Defecto}"
 	else
 		echo "Apache2 no se ha instalado correctamente " >>/var/logs/registres/install/errors.log
-		echo -e "${Azul}Apache2${Defecto} ${Amarillo}no se ha instalado correctamente ${Defecto}" 
+		echo -e "${Celeste}Apache2${Defecto} ${Amarillo}no se ha instalado correctamente ${Defecto}" 
 	fi
 else
 	echo "Apache2 ya está instalado" >>/var/logs/registres/install/glpi.log
-	echo -e "${Azul}Apache2${Defecto} ya está instalado"
+	echo -e "${Celeste}Apache2${Defecto} ya está instalado"
 fi
 
 #Instalación del paquete mariadb-server versión 10.4
 echo -e "${Lila}Instalando mariadb-server en su ultima version${Defecto}"
 #Instalación del software-propierties-common 
 if [ $(dpkg-query -W -f='${Status}' 'software-properties-common' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then 
-	echo -e "${Azul}software-properties-common${Defecto} no está instalado" 
+	echo -e "${Celeste}software-properties-common${Defecto} no está instalado" 
 	echo "software-properties-common no está instalado" >>/var/logs/registres/install/glpi.log
 
 	apt-get -y install software-properties-common  >/dev/null 2>&1
 	if [ $? -eq 0 ];then
 		echo "software-properties-common se ha instalado correctamente" >>/var/logs/registres/install/glpi.log
-		echo -e "${Azul}software-properties-common${Defecto} ${Celeste}se ha instalado correctamente${Defecto}"
+		echo -e "${Celeste}software-properties-common${Defecto} ${Celeste}se ha instalado correctamente${Defecto}"
 	else
 		echo "software-properties-common no se ha instalado correctamente" >>/var/logs/registres/install/errors.log
-		echo -e "${Azul}software-properties-common${Defecto} ${Amarillo}no se ha instalado correctamente${Defecto}"
+		echo -e "${Celeste}software-properties-common${Defecto} ${Amarillo}no se ha instalado correctamente${Defecto}"
 	fi
 else
 	echo "software-properties-common está instalado" >>/var/logs/registres/install/glpi.log
-	echo -e "${Azul}software-properties-common${Defecto} está instalado" 
+	echo -e "${Celeste}software-properties-common${Defecto} está instalado" 
 fi
 
 #Instalación del dirmngr
 if [ $(dpkg-query -W -f='${Status}' 'dirmngr' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then 
-	echo -e "${Azul}dirmngr${Defecto} no está instalado" 
+	echo -e "${Celeste}dirmngr${Defecto} no está instalado" 
 	echo "dirmngr no está instalado" >>/var/logs/registres/install/glpi.log
 
 	apt-get -y install dirmngr >/dev/null 2>&1
 	if [ $? -eq 0 ];then
 		echo "dirmngr se ha instalado correctamente" >>/var/logs/registres/install/glpi.log
-		echo -e "${Azul}dirmngr${Defecto} ${Celeste}se ha instalado correctamente${Defecto}"
+		echo -e "${Celeste}dirmngr${Defecto} ${Celeste}se ha instalado correctamente${Defecto}"
 	else
 		echo "dirmngr no se ha instalado correctamente" >>/var/logs/registres/install/errors.log
-		echo -e "${Azul}dirmngr${Defecto} ${Amarillo}no se ha instalado correctamente${Defecto}"
+		echo -e "${Celeste}dirmngr${Defecto} ${Amarillo}no se ha instalado correctamente${Defecto}"
 	fi
 else
 	echo "dirmngr está instalado" >>/var/logs/registres/install/glpi.log
-	echo -e "${Azul}dirmngr${Defecto} está instalado" 
+	echo -e "${Celeste}dirmngr${Defecto} está instalado" 
 fi
 
 #Inserción de la clave
@@ -139,7 +139,7 @@ apt-get update >/dev/null 2>&1
 
 #Instalación del mariadb-server 
 if [ $(dpkg-query -W -f='${Status}' 'mariadb-server-10.4' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then 
-	echo -e "${Azul}Mariadb-server${Defecto} no está instalado" 
+	echo -e "${Celeste}Mariadb-server${Defecto} no está instalado" 
 	echo "Mariadb-server no está instalado" >>/var/logs/registres/install/glpi.log
 
 	apt-get update >/dev/null 2>&1
@@ -147,21 +147,21 @@ if [ $(dpkg-query -W -f='${Status}' 'mariadb-server-10.4' >/dev/null 2>&1 | grep
 
 	if [ $? -eq 0 ];then
 		echo "Mariadb-server se ha instalado correctamente" >>/var/logs/registres/install/glpi.log
-		echo -e "${Azul}Mariadb-server${Defecto} ${Celeste}se ha instalado correctamente${Defecto}"
+		echo -e "${Celeste}Mariadb-server${Defecto} ${Celeste}se ha instalado correctamente${Defecto}"
 	else
 		echo "Mariadb-server no se ha instalado correctamente" >>/var/logs/registres/install/errors.log
-		echo -e "${Azul}Mariadb-server${Defecto} ${Amarillo}no se ha instalado correctamente${Defecto}"
+		echo -e "${Celeste}Mariadb-server${Defecto} ${Amarillo}no se ha instalado correctamente${Defecto}"
 	fi
 else
 	echo "Mariadb-server está instalado" >>/var/logs/registres/install/glpi.log
-	echo -e "${Azul}Mariadb-server${Defecto} está instalado" 
+	echo -e "${Celeste}Mariadb-server${Defecto} está instalado" 
 fi
 
 echo -e "${Lila}Instalando php en su ultima version${Defecto}"
 #Instalación del paquete php 7.4
 if [ $(dpkg-query -W -f='${Status}' 'php7.4' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then 
 	echo "Php no está instalado" >>/var/logs/registres/install/glpi.log
-	echo -e "${Azul}Php${Defecto} no está instalado"
+	echo -e "${Celeste}Php${Defecto} no está instalado"
 
 	apt -y install lsb-release apt-transport-https ca-certificates >/dev/null 2>&1
 	wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg >/dev/null 2>&1
@@ -169,14 +169,14 @@ if [ $(dpkg-query -W -f='${Status}' 'php7.4' >/dev/null 2>&1 | grep -c "ok insta
 	apt-get update >/dev/null 2>&1
 	apt-get -y install php7.4 >/dev/null 2>&1
 	if [ $? -eq 0 ];then
-		echo -e "${Azul}php 7.4${Defecto} ${Celeste}se ha instalado correctamente${Defecto}"
+		echo -e "${Celeste}php 7.4${Defecto} ${Celeste}se ha instalado correctamente${Defecto}"
 		echo "php 7.4 se ha instalado correctamente" >>/var/logs/registres/install/glpi.log
 	else
-		echo -e "${Azul}php 7.4${Defecto} ${Amarillo}no se ha instalado correctamente${Defecto}"
+		echo -e "${Celeste}php 7.4${Defecto} ${Amarillo}no se ha instalado correctamente${Defecto}"
 		echo "php 7.4 no se ha instalado correctamente" >>/var/logs/registres/install/errors.log
 	fi
 else
-	echo -e "${Azul}Php${Defecto} ya está instalado"
+	echo -e "${Celeste}Php${Defecto} ya está instalado"
 	echo "Php ya está instalado" >>/var/logs/registres/install/glpi.log
 fi
 
@@ -186,7 +186,7 @@ echo -e "${Lila}Instalando dependencias de php ${Defecto}"
 # Instalación de php-mysql
 if [ $(dpkg-query -W -f='${Status}' 'php7.4-mysql' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then 
 	
-	echo -e "${Azul}php-mysql${Defecto} no está instalado" 
+	echo -e "${Celeste}php-mysql${Defecto} no está instalado" 
 	echo "php-mysql no está instalado" >>/var/logs/registres/install/glpi.log
 	apt-get update >/dev/null 2>&1
 	apt-get -y install php7.4-mysql  >/dev/null 2>&1
@@ -194,20 +194,20 @@ if [ $(dpkg-query -W -f='${Status}' 'php7.4-mysql' >/dev/null 2>&1 | grep -c "ok
 	if [ $? -eq 0 ];then
 
 		echo "php-mysql se ha instalado correctamente" >>/var/logs/registres/install/glpi.log
-		echo -e "${Azul}php-mysql${Defecto} ${Celeste}se ha instalado correctamente${Defecto}"
+		echo -e "${Celeste}php-mysql${Defecto} ${Celeste}se ha instalado correctamente${Defecto}"
 	else
-		echo -e "${Azul}php-mysql${Defecto} ${Amarillo}no se ha instalado correctamente${Defecto}"
+		echo -e "${Celeste}php-mysql${Defecto} ${Amarillo}no se ha instalado correctamente${Defecto}"
 		echo "php-mysql no se ha instalado correctamente" >>/var/logs/registres/install/errors.log
 	fi
 else
 	echo "php-mysql ya está instalado" >>/var/logs/registres/install/glpi.log
-	echo -e "${Azul}php-mysql${Defecto} ya está instalado"
+	echo -e "${Celeste}php-mysql${Defecto} ya está instalado"
 fi
 
 # Instalación de php-xml
 if [ $(dpkg-query -W -f='${Status}' 'php7.4-xml' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then 
 	
-	echo -e "${Azul}php-xml${Defecto} no está instalado" 
+	echo -e "${Celeste}php-xml${Defecto} no está instalado" 
 	echo "php-xml no está instalado" >>/var/logs/registres/install/glpi.log
 	apt-get update >/dev/null 2>&1
 	apt-get -y install php7.4-xml  >/dev/null 2>&1
@@ -215,130 +215,168 @@ if [ $(dpkg-query -W -f='${Status}' 'php7.4-xml' >/dev/null 2>&1 | grep -c "ok i
 	if [ $? -eq 0 ];then
 
 		echo "php-xml se ha instalado correctamente" >>/var/logs/registres/install/glpi.log
-		echo -e "${Azul}php-xml${Defecto} ${Celeste}se ha instalado correctamente${Defecto}"
+		echo -e "${Celeste}php-xml${Defecto} ${Celeste}se ha instalado correctamente${Defecto}"
 	else
-		echo -e "${Azul}php-xml${Defecto} ${Amarillo}no se ha instalado correctamente${Defecto}"
+		echo -e "${Celeste}php-xml${Defecto} ${Amarillo}no se ha instalado correctamente${Defecto}"
 		echo "php-xml no se ha instalado correctamente" >>/var/logs/registres/install/errors.log
 	fi
 else
 	echo "php-xml ya está instalado" >>/var/logs/registres/install/glpi.log
-	echo -e "${Azul}php-xml${Defecto} ya está instalado"
+	echo -e "${Celeste}php-xml${Defecto} ya está instalado"
 fi
 
 # Instalación de php-mbstring
 if [ $(dpkg-query -W -f='${Status}' 'php7.4-mbstring' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then 
 	
-	echo -e "${Azul}php-mbstring${Defecto} no está instalado"
+	echo -e "${Celeste}php-mbstring${Defecto} no está instalado"
 	echo "php-mbstring no está instalado" >>/var/logs/registres/install/glpi.log
 	apt-get -y install php7.4-mbstring >/dev/null 2>&1
 
 	if [ $? -eq 0 ];then
 		echo "php-mbstring se ha instalado correctamente" >>/var/logs/registres/install/glpi.log
-		echo -e "${Azul}php-mbstring${Defecto} ${Celeste}se ha instalado correctamente${Defecto}"
+		echo -e "${Celeste}php-mbstring${Defecto} ${Celeste}se ha instalado correctamente${Defecto}"
 
 	else
-		echo -e "${Azul}php-mbstring${Defecto} ${Amarillo}no se ha instalado correctamente${Defecto}"
+		echo -e "${Celeste}php-mbstring${Defecto} ${Amarillo}no se ha instalado correctamente${Defecto}"
 		echo "php-mbstring no se ha instalado correctamente" >>/var/logs/registres/install/errors.log
 	fi
 else
 	echo "php-mbstring ya está instalado" >>/var/logs/registres/install/glpi.log
-	echo -e "${Azul}php-mbstring${Defecto} ya está instalado"
+	echo -e "${Celeste}php-mbstring${Defecto} ya está instalado"
 fi
 
 # Instalación de php-curl
 if [ $(dpkg-query -W -f='${Status}' 'php7.4-curl' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then 
 
-	echo -e "${Azul}php-curl${Defecto} no está instalado"
+	echo -e "${Celeste}php-curl${Defecto} no está instalado"
 	echo "php-curl no está instalado" >>/var/logs/registres/install/glpi.log
 	apt-get -y install php7.4-curl >/dev/null 2>&1
 
 	if [ $? -eq 0 ];then
 		echo "php-curl se ha instalado correctamente" >>/var/logs/registres/install/glpi.log
-		echo -e "${Azul}php-curl${Defecto} ${Celeste}se ha instalado correctamente${Defecto}"
+		echo -e "${Celeste}php-curl${Defecto} ${Celeste}se ha instalado correctamente${Defecto}"
 	else
-		echo -e "${Azul}php-curl${Defecto} ${Amarillo}no se ha instalado correctamente${Defecto}"
+		echo -e "${Celeste}php-curl${Defecto} ${Amarillo}no se ha instalado correctamente${Defecto}"
 		echo "php-curl no se ha instalado correctamente" >>/var/logs/registres/install/errors.log
 	fi
 else
 	echo "php-curl ya está instalado" >>/var/logs/registres/install/glpi.log
-	echo -e "${Azul}php-curl${Defecto} ya está instalado"
+	echo -e "${Celeste}php-curl${Defecto} ya está instalado"
 fi
 
 # Instalación de php-zip
 if [ $(dpkg-query -W -f='${Status}' 'php7.4-zip' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then
 
-	echo -e "${Azul}php-zip${Defecto} no está instalado"
+	echo -e "${Celeste}php-zip${Defecto} no está instalado"
 	echo "php-zip no está instalado" >>/var/logs/registres/install/glpi.log
 	apt-get -y install php7.4-zip >/dev/null 2>&1
 
 	if [ $? -eq 0 ];then
 		echo -e "php-zip se ha instalado correctamente" >>/var/logs/registres/install/glpi.log
-		echo -e "${Azul}php-zip${Defecto} ${Celeste}se ha instalado correctamente${Defecto}"
+		echo -e "${Celeste}php-zip${Defecto} ${Celeste}se ha instalado correctamente${Defecto}"
 	else
-		echo -e "${Azul}php-zip${Defecto} ${Amarillo}no se ha instalado correctamente${Defecto}"
+		echo -e "${Celeste}php-zip${Defecto} ${Amarillo}no se ha instalado correctamente${Defecto}"
 		echo "php-zip no se ha instalado correctamente" >>/var/logs/registres/install/errors.log
 	fi
 else
 	echo "php-zip ya está instalado" >>/var/logs/registres/install/glpi.log
-	echo -e "${Azul}php-zip${Defecto} ya está instalado"
+	echo -e "${Celeste}php-zip${Defecto} ya está instalado"
 fi
 
 # Instalación de php-gd
 if [ $(dpkg-query -W -f='${Status}' 'php7.4-gd' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then
 
-	echo -e "${Azul}php-gd${Defecto} no está instalado"
+	echo -e "${Celeste}php-gd${Defecto} no está instalado"
 	echo "php-gd no está instalado" >>/var/logs/registres/install/glpi.log
 	apt-get -y install php7.4-gd >/dev/null 2>&1
 
 	if [ $? -eq 0 ];then
 		echo -e "php-gd se ha instalado correctamente" >>/var/logs/registres/install/glpi.log
-		echo -e "${Azul}php-gd${Defecto} ${Celeste}se ha instalado correctamente${Defecto}"
+		echo -e "${Celeste}php-gd${Defecto} ${Celeste}se ha instalado correctamente${Defecto}"
 
 	else
-		echo -e "${Azul}php-gd${Defecto} ${Amarillo}no se ha instalado correctamente${Defecto}"
+		echo -e "${Celeste}php-gd${Defecto} ${Amarillo}no se ha instalado correctamente${Defecto}"
 		echo "php-gd no se ha instalado correctamente" >>/var/logs/registres/install/errors.log
 	fi
 else
 	echo "php-gd ya está instalado" >>/var/logs/registres/install/glpi.log
-	echo -e "${Azul}php-gd${Defecto} ya está instalado"
+	echo -e "${Celeste}php-gd${Defecto} ya está instalado"
 fi
 
 # Instalación de php-intl
 if [ $(dpkg-query -W -f='${Status}' 'php7.4-intl' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then
 
-	echo -e "${Azul}php-intl${Defecto} no está instalado"
+	echo -e "${Celeste}php-intl${Defecto} no está instalado"
 	echo "php-intl no está instalado" >>/var/logs/registres/install/glpi.log
 	apt-get -y install php7.4-intl >/dev/null 2>&1
 
 	if [ $? -eq 0 ];then
 		echo "php-intl se ha instalado correctamente" >>/var/logs/registres/install/glpi.log
-		echo -e "${Azul}php-intl${Defecto} ${Celeste}se ha instalado correctamente${Defecto}"
+		echo -e "${Celeste}php-intl${Defecto} ${Celeste}se ha instalado correctamente${Defecto}"
 	else
-		echo -e "${Azul}php-intl${Defecto} ${Amarillo}no se ha instalado correctamente${Defecto}"
+		echo -e "${Celeste}php-intl${Defecto} ${Amarillo}no se ha instalado correctamente${Defecto}"
 		echo "php-intl no se ha instalado correctamente" >>/var/logs/registres/install/errors.log
 	fi
 else
 	echo "php-intl ya está instalado" >>/var/logs/registres/install/glpi.log
-	echo -e "${Azul}php-intl${Defecto} ya está instalado"
+	echo -e "${Celeste}php-intl${Defecto} ya está instalado"
 fi
 
 # Instalación de php-soap
 if [ $(dpkg-query -W -f='${Status}' 'php7.4-soap' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then
 
-	echo -e "${Azul}php-soap${Defecto} no está instalado"
+	echo -e "${Celeste}php-soap${Defecto} no está instalado"
 	echo "php-soap no está instalado" >>/var/logs/registres/install/glpi.log
 	apt-get -y install php7.4-soap >/dev/null 2>&1
 
 	if [ $? -eq 0 ];then
 		echo "php-soap se ha instalado correctamente" >>/var/logs/registres/install/glpi.log
-		echo -e "${Azul}php-soap${Defecto} ${Celeste}se ha instalado correctamente${Defecto}"
+		echo -e "${Celeste}php-soap${Defecto} ${Celeste}se ha instalado correctamente${Defecto}"
 	else
-		echo -e "${Azul}php-soap${Defecto} ${Amarillo}no se ha instalado correctamente${Defecto}"
+		echo -e "${Celeste}php-soap${Defecto} ${Amarillo}no se ha instalado correctamente${Defecto}"
 		echo "php-soap no se ha instalado correctamente" >>/var/logs/registres/install/errors.log
 	fi
 else
 	echo "php-soap ya está instalado" >>/var/logs/registres/install/glpi.log
-	echo -e "${Azul}php-soap${Defecto} ya está instalado"
+	echo -e "${Celeste}php-soap${Defecto} ya está instalado"
+fi
+
+# Instalación de php-imagick
+if [ $(dpkg-query -W -f='${Status}' 'php7.4-imagick' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then
+
+	echo -e "${Celeste}php-imagick${Defecto} no está instalado"
+	echo "php-imagick no está instalado" >>/script/registro.txt
+	apt-get -y install php7.4-imagick >/dev/null 2>&1
+
+	if [ $? -eq 0 ];then
+		echo "php-imagick se ha instalado correctamente" >>/script/registro.txt
+		echo -e "${Celeste}php-imagick${Defecto} ${Verde}se ha instalado correctamente${Defecto}"
+	else
+		echo -e "${Celeste}php-imagick${Defecto} ${Rojo}no se ha instalado correctamente${Defecto}"
+		echo "php-imagick no se ha instalado correctamente" >>/script/registro.txt
+	fi
+else
+	echo "php-imagick ya está instalado" >>/script/registro.txt
+	echo -e "${Celeste}php-imagick${Defecto} ya está instalado"
+fi
+
+# Instalación de php-ldap
+if [ $(dpkg-query -W -f='${Status}' 'php7.4-ldap' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then
+
+	echo -e "${Celeste}php-ldap${Defecto} no está instalado"
+	echo "php-ldap no está instalado" >>/script/registro.txt
+	apt-get -y install php7.4-ldap >/dev/null 2>&1
+
+	if [ $? -eq 0 ];then
+		echo "php-ldap se ha instalado correctamente" >>/script/registro.txt
+		echo -e "${Celeste}php-ldap${Defecto} ${Verde}se ha instalado correctamente${Defecto}"
+	else
+		echo -e "${Celeste}php-ldap${Defecto} ${Rojo}no se ha instalado correctamente${Defecto}"
+		echo "php-ldap no se ha instalado correctamente" >>/script/registro.txt
+	fi
+else
+	echo "php-ldap ya está instalado" >>/script/registro.txt
+	echo -e "${Celeste}php-ldap${Defecto} ya está instalado"
 fi
 
 #Creación de la base de datos para el servidor y Comprobación de que la base de datos ha sido creada
