@@ -345,18 +345,18 @@ fi
 if [ $(dpkg-query -W -f='${Status}' 'php7.4-imagick' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then
 
 	echo -e "${Celeste}php-imagick${Defecto} no está instalado"
-	echo "php-imagick no está instalado" >>/script/registro.txt
+	echo "php-imagick no está instalado" >>/var/logs/registres/install/glpi.log
 	apt-get -y install php7.4-imagick >/dev/null 2>&1
 
 	if [ $? -eq 0 ];then
-		echo "php-imagick se ha instalado correctamente" >>/script/registro.txt
+		echo "php-imagick se ha instalado correctamente" >>/var/logs/registres/install/glpi.log
 		echo -e "${Celeste}php-imagick${Defecto} ${Verde}se ha instalado correctamente${Defecto}"
 	else
 		echo -e "${Celeste}php-imagick${Defecto} ${Rojo}no se ha instalado correctamente${Defecto}"
-		echo "php-imagick no se ha instalado correctamente" >>/script/registro.txt
+		echo "php-imagick no se ha instalado correctamente" >>/var/logs/registres/install/errors.log
 	fi
 else
-	echo "php-imagick ya está instalado" >>/script/registro.txt
+	echo "php-imagick ya está instalado" >>/var/logs/registres/install/glpi.log
 	echo -e "${Celeste}php-imagick${Defecto} ya está instalado"
 fi
 
@@ -364,20 +364,79 @@ fi
 if [ $(dpkg-query -W -f='${Status}' 'php7.4-ldap' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then
 
 	echo -e "${Celeste}php-ldap${Defecto} no está instalado"
-	echo "php-ldap no está instalado" >>/script/registro.txt
+	echo "php-ldap no está instalado" >>/var/logs/registres/install/glpi.log
 	apt-get -y install php7.4-ldap >/dev/null 2>&1
 
 	if [ $? -eq 0 ];then
-		echo "php-ldap se ha instalado correctamente" >>/script/registro.txt
+		echo "php-ldap se ha instalado correctamente" >>/var/logs/registres/install/glpi.log
 		echo -e "${Celeste}php-ldap${Defecto} ${Verde}se ha instalado correctamente${Defecto}"
 	else
 		echo -e "${Celeste}php-ldap${Defecto} ${Rojo}no se ha instalado correctamente${Defecto}"
-		echo "php-ldap no se ha instalado correctamente" >>/script/registro.txt
+		echo "php-ldap no se ha instalado correctamente" >>/var/logs/registres/install/errors.log
 	fi
 else
-	echo "php-ldap ya está instalado" >>/script/registro.txt
+	echo "php-ldap ya está instalado" >>/var/logs/registres/install/glpi.log
 	echo -e "${Celeste}php-ldap${Defecto} ya está instalado"
 fi
+
+# Instalación de php-bz2
+if [ $(dpkg-query -W -f='${Status}' 'php7.4-bz2' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then
+
+	echo -e "${Celeste}php-bz2${Defecto} no está instalado"
+	echo "php-bz2 no está instalado" >>/var/logs/registres/install/glpi.log
+	apt-get -y install php7.4-bz2 >/dev/null 2>&1
+
+	if [ $? -eq 0 ];then
+		echo "php-bz2 se ha instalado correctamente" >>/var/logs/registres/install/glpi.log
+		echo -e "${Celeste}php-bz2${Defecto} ${Verde}se ha instalado correctamente${Defecto}"
+	else
+		echo -e "${Celeste}php-bz2${Defecto} ${Rojo}no se ha instalado correctamente${Defecto}"
+		echo "php-bz2 no se ha instalado correctamente" >>/var/logs/registres/install/errors.log
+	fi
+else
+	echo "php-bz2 ya está instalado" >>/var/logs/registres/install/glpi.log
+	echo -e "${Celeste}php-bz2${Defecto} ya está instalado"
+fi
+
+# Instalación de php-apcu
+if [ $(dpkg-query -W -f='${Status}' 'php7.4-apcu' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then
+
+	echo -e "${Celeste}php-apcu${Defecto} no está instalado"
+	echo "php-apcu no está instalado" >>/var/logs/registres/install/glpi.log
+	apt-get -y install php7.4-apcu >/dev/null 2>&1
+
+	if [ $? -eq 0 ];then
+		echo "php-apcu se ha instalado correctamente" >>/var/logs/registres/install/glpi.log
+		echo -e "${Celeste}php-apcu${Defecto} ${Verde}se ha instalado correctamente${Defecto}"
+	else
+		echo -e "${Celeste}php-apcu${Defecto} ${Rojo}no se ha instalado correctamente${Defecto}"
+		echo "php-apcu no se ha instalado correctamente" >>/var/logs/registres/install/errors.log
+	fi
+else
+	echo "php-apcu ya está instalado" >>/var/logs/registres/install/glpi.log
+	echo -e "${Celeste}php-apcu${Defecto} ya está instalado"
+fi
+
+# Instalación de php-xmlrpc
+if [ $(dpkg-query -W -f='${Status}' 'php7.4-xmlrpc' >/dev/null 2>&1 | grep -c "ok installed") -eq 0 ];then
+
+	echo -e "${Celeste}php-xmlrpc${Defecto} no está instalado"
+	echo "php-xmlrpc no está instalado" >>/var/logs/registres/install/glpi.log
+	apt-get -y install php7.4-xmlrpc >/dev/null 2>&1
+
+	if [ $? -eq 0 ];then
+		echo "php-xmlrpc se ha instalado correctamente" >>/var/logs/registres/install/glpi.log
+		echo -e "${Celeste}php-xmlrpc${Defecto} ${Verde}se ha instalado correctamente${Defecto}"
+	else
+		echo -e "${Celeste}php-xmlrpc${Defecto} ${Rojo}no se ha instalado correctamente${Defecto}"
+		echo "php-xmlrpc no se ha instalado correctamente" >>/var/logs/registres/install/errors.log
+	fi
+else
+	echo "php-xmlrpc ya está instalado" >>/var/logs/registres/install/glpi.log
+	echo -e "${Celeste}php-xmlrpc${Defecto} ya está instalado"
+fi
+
+
 
 #Creación de la base de datos para el servidor y Comprobación de que la base de datos ha sido creada
 echo -e "${Lila}Crear la base de datos${Defecto}"
