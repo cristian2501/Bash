@@ -36,7 +36,11 @@ else
 	exit
 fi		
 
+mkdir /var/logs/
+mkdir /var/logs/registres/
 mkdir /var/logs/registres/install/
+
+
 #Comprobación de usuario
 if [ $(whoami) == "root" ]; then
 	echo -e "Tienes los permisos"
@@ -61,7 +65,7 @@ if [ $(dpkg-query -W -f='${Status}' 'apache2' >/dev/null 2>&1 | grep -c "ok inst
 		echo "Apache2 se ha instalado correctamente" >>/var/logs/registres/install/glpi.log
 		echo -e "${Azul}Apache2${Defecto} ${Celeste}se ha instalado correctamente${Defecto}"
 	else
-		echo "Apache2 no se ha instalado correctamente "  >>/var/logs/registres/install/errors.log
+		echo "Apache2 no se ha instalado correctamente " >>/var/logs/registres/install/errors.log
 		echo -e "${Azul}Apache2${Defecto} ${Amarillo}no se ha instalado correctamente ${Defecto}" 
 	fi
 else
